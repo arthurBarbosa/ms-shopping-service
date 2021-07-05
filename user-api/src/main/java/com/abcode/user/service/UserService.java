@@ -22,4 +22,9 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public UserDTO findById(Long id) {
+        var user = userRepository.findById(id);
+        return user.map(UserDTO::convert).orElse(null);
+    }
+
 }
