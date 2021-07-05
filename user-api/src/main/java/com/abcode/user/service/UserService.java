@@ -39,4 +39,12 @@ public class UserService {
         return null;
     }
 
+    public UserDTO findByCpf(String cpf) {
+        var user = userRepository.findByCpf(cpf);
+        if (user != null) {
+            return UserDTO.convert(user);
+        }
+        return null;
+    }
+
 }
