@@ -1,6 +1,7 @@
 package com.abcode.user.service;
 
 import com.abcode.user.dto.UserDTO;
+import com.abcode.user.entity.User;
 import com.abcode.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,11 @@ public class UserService {
     public UserDTO findById(Long id) {
         var user = userRepository.findById(id);
         return user.map(UserDTO::convert).orElse(null);
+    }
+
+    public UserDTO save(UserDTO userDTO) {
+        var user = userRepository.save(User.convert(userDTO));
+        return UserDTO.convert(user);
     }
 
 }
