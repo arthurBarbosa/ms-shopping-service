@@ -33,4 +33,10 @@ public class UserService {
         return UserDTO.convert(user);
     }
 
+    public UserDTO delete(Long id) {
+        var user = userRepository.findById(id);
+        user.ifPresent(userRepository::delete);
+        return null;
+    }
+
 }
