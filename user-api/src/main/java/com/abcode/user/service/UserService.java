@@ -47,4 +47,9 @@ public class UserService {
         return null;
     }
 
+    public List<UserDTO> queryByName(String name) {
+        var users = userRepository.queryByNameLike(name);
+        return users.stream().map(UserDTO::convert).collect(Collectors.toList());
+    }
+
 }
