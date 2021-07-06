@@ -40,8 +40,17 @@ public class ProductService {
         return ProductDTO.convert(product);
     }
 
-    public void delete(Long productId){
+    public ProductDTO delete(Long productId) {
         Optional<Product> product = productRepository.findById(productId);
         product.ifPresent(productRepository::delete);
+        return null;
+    }
+
+    public List<ProductDTO> getProductByCategoryId(Long categoryId) {
+        var products = productRepository.getProductByCategory(categoryId);
+        return products
+                .stream()
+                .map(ProductDTO::convert)
+                .collect(Collectors.toList());
     }
 }

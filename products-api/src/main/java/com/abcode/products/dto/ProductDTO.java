@@ -28,6 +28,7 @@ public class ProductDTO {
         var dto = new ProductDTO();
         dto.setName(product.getName());
         dto.setPrice(product.getPrice());
+        dto.setProductIdentifier(product.getProductIdentifier());
         dto.setDescription(product.getDescription());
         if (product.getCategory() != null) {
             dto.setCategory(CategoryDTO.convert(product.getCategory()));
